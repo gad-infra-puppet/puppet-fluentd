@@ -6,9 +6,10 @@ define fluentd::forest_match (
     $config   = {},
     $servers  = [],
 ) {
-
+    $target_file = "/etc/td-agent/config.d/${configfile}.conf"
+    concat { $target_file : }
     concat::fragment { "match_${title}":
-        target  => "/etc/td-agent/config.d/${configfile}.conf",
+        target  => $target_file,
         require => Package["${fluentd::package_name}"],
         content => template('fluentd/forest_match.erb'),
     }
