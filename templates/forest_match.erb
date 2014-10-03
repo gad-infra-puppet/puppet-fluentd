@@ -1,5 +1,6 @@
 <match <%= @pattern %>>
-  type <%= @type %>
+  type forest
+  subtype <%= @type %>
 <% @config.sort_by{|key,val|key}.each do |key, val| -%>
   <% if val.class == Hash && key == 'template' %> 
     <template>
