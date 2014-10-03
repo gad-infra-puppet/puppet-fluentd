@@ -7,7 +7,7 @@ class fluentd::install_repo::apt () {
 
     apt::source { 'treasure-data':
         location    => "http://packages.treasuredata.com/debian",
-        release     => "lucid",
+        release     => $lsbdistcodename,
         repos       => "contrib",
         include_src => false,
     }
