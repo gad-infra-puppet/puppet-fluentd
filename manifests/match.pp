@@ -1,8 +1,9 @@
 # == definition fluentd::match
 define fluentd::match (
   $ensure   = present,
+  $target_file,
   $config   = {},
-  $priority = 50,
+  $order = 50,
   $pattern,
 ) {
     concat::fragment { "match_${title}":
