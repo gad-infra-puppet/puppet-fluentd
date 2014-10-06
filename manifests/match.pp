@@ -5,9 +5,10 @@ define fluentd::match (
   $priority = 50,
   $pattern,
 ) {
-  fluentd::configfile { "match-${name}":
-    ensure   => $ensure,
-    content  => template( 'fluentd/match.erb' ),
-    priority => $priority,
-  }
+    concat::fragment { "match_${title}":
+      target  => $target_file,
+      require => Package["${fluentd::package_name}"],
+      content => template('fluentd/match.erb'),
+      order   => $order,
+    }
 }
