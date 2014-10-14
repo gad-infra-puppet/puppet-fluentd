@@ -6,7 +6,7 @@
 class fluentd::install_repo::apt () {
 
     apt::source { 'treasure-data':
-        location    => "http://packages.treasuredata.com/2/debian/squeeze/",
+        location    => "http://packages.treasuredata.com/2/debian/${lsbdistcodename}/",
         release     => $lsbdistcodename,
         repos       => "contrib",
         include_src => false,
